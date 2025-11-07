@@ -1,0 +1,21 @@
+{
+  "name": "solidjs-car-brands",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "solid-js": "^1.8.0"
+  },
+  "devDependencies": {
+    "vite": "^4.4.0",
+    "vite-plugin-solid": "^2.7.0"
+  },
+  "keywords": ["solidjs", "vite", "car-brands", "automotive"],
+  "author": "",
+  "license": "ISC",
+  "description": "汽车品牌标志展示页面 - 使用SolidJS和Vite构建"
+}

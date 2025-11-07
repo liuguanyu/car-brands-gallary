@@ -1,0 +1,330 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Microsoft YaHei', Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* App container */
+.app {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 15px;
+}
+
+.header h1 {
+  color: #2c3e50;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Print button styles */
+.print-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.print-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.print-button:active {
+  transform: translateY(0);
+}
+
+/* Brand grid styles */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Brand card styles */
+.brand-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-color: #3498db;
+}
+
+.brand-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brand-name {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.brand-name-en {
+  font-size: 1em;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* Print styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .app {
+    padding: 0;
+  }
+
+  .container {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    max-width: none;
+    border-radius: 0;
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .print-button {
+    display: none;
+  }
+
+  /* Only apply to non-big-logo mode */
+  .app:not(.big-logo-mode) .brand-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .app:not(.big-logo-mode) .brand-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Big logo mode print styles */
+  .big-logo-mode {
+    padding: 0;
+  }
+
+  .big-logo-mode .container {
+    padding: 5px;
+  }
+
+  .big-logo-mode .header {
+    display: none;
+  }
+
+  .big-logo-mode .big-logo-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px;
+  }
+
+  .big-logo-mode .big-logo-card {
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 300px;
+    page-break-inside: avoid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .big-logo-mode .big-logo {
+    max-width: 250px;
+    max-height: 250px;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 2em;
+  }
+
+  .brands-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .brand-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brands-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .brand-card {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 1.8em;
+  }
+}
+
+/* Big Logo Mode Styles */
+.big-logo-mode {
+  padding: 10px;
+}
+
+.big-logo-mode .container {
+  padding: 10px;
+  max-width: none;
+}
+
+.big-logo-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin: 0;
+}
+
+.big-logo-card {
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  transition: none;
+}
+
+.big-logo-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: #333;
+}
+
+.big-logo {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 160px;
+  max-height: 160px;
+  object-fit: contain;
+  margin: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* Responsive for big logo mode */
+@media (max-width: 768px) {
+  .big-logo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .big-logo-card {
+    min-height: 150px;
+    padding: 10px;
+  }
+
+  .big-logo {
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .big-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .big-logo-card {
+    min-height: 120px;
+    padding: 8px;
+  }
+
+  .big-logo {
+    max-width: 100px;
+    max-height: 100px;
+  }
+}

@@ -1,0 +1,16 @@
+__pycache__/
+*.log
+*.log.*
+logs/
+.vscode
+.idea
+celerybeat-schedule.db
+*.DS_Store
+venv/*
+
+/tempdir
+/drafts
+/shells
+*.ps1
+node_modules
+dist
